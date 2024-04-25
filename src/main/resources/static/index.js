@@ -69,12 +69,35 @@ $(() => {
 
 
 
+<<<<<<< HEAD
+=======
+/* Feil- ville ikke lagre info ved localhost:8080
+>>>>>>> 57aa70f (Initial commit)
 const bestill = (billett) => {
      $.post("/bestill", billett, () => bestillSuksess());
 
 };
 
+<<<<<<< HEAD
 const bestillSuksess = () => {
+=======
+ */
+    const bestill = (billett) => {
+        $.ajax({
+            url: "/lagre",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(billett),
+            success: bestillSuksess,
+            error: function(error) {
+                console.log("Error:", error);
+            }
+        });
+    };
+
+
+    const bestillSuksess = () => {
+>>>>>>> 57aa70f (Initial commit)
     console.log("bestill suksess is running")
 
     hentAlle();
