@@ -63,21 +63,9 @@ $(() => {
                 epost: epost
             };
 
-           bestill(billett)
+            bestill(billett)
         }
     });
-
-
-
-<<<<<<< HEAD
-=======
-/* Feil- ville ikke lagre info ved localhost:8080
->>>>>>> 57aa70f (Initial commit)
-const bestill = (billett) => {
-     $.post("/bestill", billett, () => bestillSuksess());
-
-};
-
 
     const bestill = (billett) => {
         $.ajax({
@@ -92,48 +80,38 @@ const bestill = (billett) => {
         });
     };
 
-
     const bestillSuksess = () => {
+        console.log("bestill suksess is running")
 
-    console.log("bestill suksess is running")
+        hentAlle();
 
-    hentAlle();
+        $("#film").val("Ant-Man");
+        $("#antall").val("");
+        $("#fornavn").val("");
+        $("#etternavn").val("");
+        $("#telefonnr").val("");
+        $("#epost").val("");
+    }
 
-    $("#film").val("Ant-Man");
-    $("#antall").val("");
-    $("#fornavn").val("");            2
-    $("#etternavn").val("");
-    $("#telefonnr").val("");
-    $("#epost").val("");
-}
-
-function hentAlle() {
-    $.get( "/hentalle", function( billetter ) {
-        billetter.forEach((billett) => {
-            let billettHTML = "<list>"
-            billettHTML += "<li>" + billett.antall + " billett(er) for " + billett.film + " på navn: " + billett.fornavn + " " + billett.etternavn + " " + billett.telefonnr + ", "
-                + billett.epost + "</li>";
-            billettHTML += "</list>"
+    function hentAlle() {
+        $.get("/hentalle", function( billetter ) {
+            let billettHTML = "<ul>"; // Bruk ul i stedet for list
+            billetter.forEach((billett) => {
+                billettHTML += "<li>" + billett.antall + " billett(er) for " + billett.film + " på navn: " + billett.fornavn + " " + billett.etternavn + " " + billett.telefonnr + ", "
+                    + billett.epost + "</li>";
+            });
+            billettHTML += "</ul>";
             $("#billetter").html(billettHTML);
-            console.log(billettHTML)
         });
-    });
-}
+    }
 
     // Legger til en klikk-handler for å slette alle billetter
     $("#slettAlle").click(() => {
-        $("#billetter").empty();
+        $.get("/slettalle", function (){
+            hentAlle();
+        });
     });
 });
-function slettAlle(){
-    $.get("/slettalle", function (){
-        hentAlle();
-
-    });
-}
-
-
-
 
 
 

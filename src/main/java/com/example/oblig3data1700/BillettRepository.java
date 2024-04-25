@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-package com.example.oblig3data1700;public class BillettRepository {
-=======
-
-
 package com.example.oblig3data1700;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +28,4 @@ public class BillettRepository {
         String sql = "DELETE FROM Kinobilletter";
         db.update(sql);
     }
->>>>>>> 57aa70f (Initial commit)
 }
