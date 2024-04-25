@@ -78,10 +78,7 @@ const bestill = (billett) => {
 
 };
 
-<<<<<<< HEAD
-const bestillSuksess = () => {
-=======
- */
+
     const bestill = (billett) => {
         $.ajax({
             url: "/lagre",
@@ -97,7 +94,7 @@ const bestillSuksess = () => {
 
 
     const bestillSuksess = () => {
->>>>>>> 57aa70f (Initial commit)
+
     console.log("bestill suksess is running")
 
     hentAlle();
